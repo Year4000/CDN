@@ -1,13 +1,4 @@
-@font-face {
-	font-family:UbuntuR;
-	src:url("//fonts.googleapis.com/css?family=Ubuntu");
-}
-
-@font-face {
-	font-family:UbuntuB;
-	src:url("//fonts.googleapis.com/css?family=Ubuntu:700");
-	font-weight:bold;
-}
+@import url("http://fonts.googleapis.com/css?family=Ubuntu:700,400");
 
 @font-face {
     font-family:Icons;
@@ -18,7 +9,7 @@ body {
     position:relative;
     margin:0;
 	background:#181818;
-	font-family:UbuntuR;
+	font-family:Ubuntu;
 	font-size:13px;
 	line-height:1.5;
 	padding: 10px;

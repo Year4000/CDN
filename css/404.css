@@ -1,18 +1,18 @@
-@font-face{
-	font-family:UbuntuR;
-	src:url("//fonts.googleapis.com/css?family=Ubuntu");
-}
+@import url("//fonts.googleapis.com/css?family=Ubuntu:700,400");
+
 body{
 	margin:10% auto 0;
 	width:400px;
-	font-family:UbuntuR;
+	font-family:Ubuntu;
 	font-size:14px;
 	line-height:1.5;
 }
+
 code{
 	color:#666;
 	font-style:italic;
 }
+
 div{
 	height:100px;
 	width:400px;
@@ -20,18 +20,22 @@ div{
 	border:1px solid #666;
 	background:#EFEFEF;
 }
+
 div p, div img{
 	float:left;
 }
+
 div p{
 	width:250px;
 	overflow:hidden;
 }
+
 div h1{
 	border-bottom:1px solid #666;
 	padding:0px;
 	margin:0px;
 }
+
 div img{
 	width:100px;
 	padding-right:25px;

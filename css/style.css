@@ -1,17 +1,17 @@
 @font-face {
 	font-family:UbuntuR;
-	src:url("//cdn.year4000.net/fonts/Ubuntu-R.ttf");
+	src:url("//fonts.googleapis.com/css?family=Ubuntu");
 }
 
 @font-face {
 	font-family:UbuntuB;
-	src:url("//cdn.year4000.net/fonts/Ubuntu-B.ttf");
+	src:url("//fonts.googleapis.com/css?family=Ubuntu:700");
 	font-weight:bold;
 }
 
 @font-face {
     font-family:Icons;
-	src:url("//cdn.year4000.net/fonts/Awesome.ttf");
+	src:url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 }
 
 body {

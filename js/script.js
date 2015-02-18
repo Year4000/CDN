@@ -6,18 +6,18 @@ function init() {
 }
 
 function sound(s,b) {
-	var sound = document.getElementById(s);
-	var button = document.getElementById(b);
-	if (button.dataset.state === "on") {
-		sound.pause();
-		button.innerHTML = "&#xf026;";
+    var sound = document.getElementById(s);
+    var button = document.getElementById(b);
+    if (button.dataset.state === "on") {
+        sound.pause();
+        button.innerHTML = "&#xf026;";
         button.dataset.state = "off";
-	}
+    }
     else {
-		sound.play();
-		button.innerHTML = "&#xf028;";
+        sound.play();
+        button.innerHTML = "&#xf028;";
         button.dataset.state = "on";
-	}
+    }
 }
 
 function breakframe() {

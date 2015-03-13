@@ -14,7 +14,7 @@ code{
 }
 
 div{
-    height:100px;
+    min-height:100px;
     width:400px;
     padding:25px;
     border:1px solid #666;

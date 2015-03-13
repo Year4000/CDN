@@ -32,6 +32,10 @@ div p{
     overflow:hidden;
 }
 
+div ul{
+    clear:both;
+}
+
 div h1{
     border-bottom:1px solid #666;
     padding:0px;

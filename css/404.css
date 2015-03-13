@@ -26,9 +26,15 @@ div p, div img{
     float:left;
 }
 
-div p{
+.cf-error-details p {
     min-width:250px;
     max-width:500px;
+    overflow:hidden;
+
+}
+
+div p{
+    width:250px;
     overflow:hidden;
 }
 

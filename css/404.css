@@ -15,7 +15,8 @@ code{
 
 div{
     min-height:100px;
-    width:400px;
+    min-width:400px;
+    max-width:500px;
     padding:25px;
     border:1px solid #666;
     background:#EFEFEF;

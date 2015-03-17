@@ -39,7 +39,7 @@ div p{
 
 }
 
-div ul{
+div ul, div h3{
     clear:both;
 }
 

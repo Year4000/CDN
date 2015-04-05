@@ -1,0 +1,80 @@
+@charset "UTF-8";
+* {
+    border-radius: 0px !important;
+}
+
+a, a:visited {
+    color: #F1F2FF;
+}
+
+a:hover {
+    color: #D2D3DB;
+    text-decoration: none;
+}
+
+a:focus, a:active {
+    color: #F1F2FF;
+    text-decoration: none;
+    border-bottom: 1px dotted #111;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Super lables */
+
+.super-label, .super-label-small {
+    text-transform: uppercase;
+    font-size: 7px;
+    position: absolute;
+    top: -8px;
+    margin-left: 14px;
+}
+
+.super-label {
+    font-size: 9px;
+    position: relative;
+    top: -14px;
+    margin-left: -2px;
+}
+
+/* Social display the links */
+
+.social span {
+    height: 32px;
+    width: 32px;
+    color: #FFF;
+    background: #EEE;
+    line-height: 32px;
+    font-size: 20px;
+}
+
+.social * {
+    height: 100%;
+    width:100%;
+}
+
+.social span:hover {
+    color: #F5F5F5;
+}
+
+.facebook {
+    background: #3B5998 !important;
+}
+
+.twitter {
+    background: #55ACEE !important;
+}
+
+.github {
+    color: #000 !important;
+}
+
+.google-plus {
+    background: #DD4B39 !important;
+}
+
+.youtube {
+    background: #CD201F !important;
+}

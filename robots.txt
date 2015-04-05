@@ -1,0 +1,5 @@
+# Year4000 Website, crawling is encouraged.
+# Documentation: https://resources.year4000.net/
+
+User-agent: *
+Disallow:

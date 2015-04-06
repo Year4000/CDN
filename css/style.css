@@ -97,6 +97,16 @@ body {
     overflow: hidden;
 }
 
+.login {
+    display: inline-block;
+    padding: 8% 50px;
+}
+
+.login form {
+    display: inline-block;
+    max-width: 250px;
+}
+
 @media screen and (max-width: 768px) {
     #content {
         padding: 2% 5% !important;

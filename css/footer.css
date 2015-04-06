@@ -30,3 +30,22 @@ footer div nav {
 .footer-nav ul li:nth-child(n+1) {
     margin: 0 12px;
 }
+
+#locale-selector {
+}
+
+#locale-selector ~ div {
+    display: none;
+    position: absolute;
+    background: #fff;
+    width: 150px;
+    padding: 10px 0 0;
+}
+
+#locale-selector ~ div a {
+    color: #666 !important;
+}
+
+#locale-selector:hover ~ div, #locale-selector ~ div:hover {
+    display: inline-block;
+}

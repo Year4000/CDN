@@ -1,3 +1,5 @@
+---
+---
 var focus = true;
 window.onload = serverCount;
 
@@ -32,6 +34,6 @@ function serverCount() {
         setTimeout(serverCount, 2000);
     };
 
-    request.open("GET", "https://api.year4000.net/player-count?compact", true);
+    request.open("GET", "{{ site.api }}player-count?compact", true);
     request.send();
 }

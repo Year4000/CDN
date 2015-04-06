@@ -1,11 +1,14 @@
+---
+bg_image: "https://i.imgur.com/GKhMbEQ.png"
+---
 @charset "UTF-8";
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:700,400");
-@import url("colors.css");
-@import url("theme.css");
-@import url("header.css");
-@import url("footer.css");
+@import url("{{ site.cdn }}css/colors.css?v={{site.time | date: '%Y%m%d%H%S'}}");
+@import url("{{ site.cdn }}css/theme.css?v={{site.time | date: '%Y%m%d%H%S'}}");
+@import url("{{ site.cdn }}css/header.css?v={{site.time | date: '%Y%m%d%H%S'}}");
+@import url("{{ site.cdn }}css/footer.css?v={{site.time | date: '%Y%m%d%H%S'}}");
 
 body {
     font-family: Ubuntu;
@@ -56,11 +59,11 @@ body {
 
 @-webkit-keyframes subHeader {
     from {
-        background: url("https://i.imgur.com/GKhMbEQ.png") bottom;
+        background: url("{{ page.bg_image }}") bottom;
         background-size: cover;
     }
     to {
-        background: url("https://i.imgur.com/GKhMbEQ.png") top;
+        background: url("{{ page.bg_image }}") top;
         background-size: cover;
     }
 }
@@ -68,7 +71,7 @@ body {
 .sub_header {
     position: relative;
     min-height: 200px;
-    background: #666 url("https://i.imgur.com/GKhMbEQ.png") bottom;
+    background: #666 url("{{ page.bg_image }}") bottom;
     background-size: cover;
     z-index: 4;
     width: 100%;

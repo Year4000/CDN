@@ -1,3 +1,6 @@
+---
+---
+var COOKIE_NAME = "y4k-search";
 var autocomplete = document.getElementById("search-input-autocomplete");
 var search = document.getElementById("search-input");
 var pending = null;
@@ -11,6 +14,7 @@ search.onkeyup = function() {
     }
 
     searchPlayers(results, ul, this.value);
+    setCookie(COOKIE_NAME, this.value);
 };
 
 search.onkeypress = function() {
@@ -36,8 +40,8 @@ function player(name) {
     var li = document.createElement("li");
     var content = "";
 
-    content += "<a href='http://home.ewized.com/player/" + name + "'>";
-    content += "<img src='https://api.year4000.net/avatar/" + name + "/20?hat'> ";
+    content += "<a href='{{ site.url }}player/" + name + "'>";
+    content += "<img src='{{ site.api }}avatar/" + name + "/20?hat'> ";
     content += "<span>" + name + "</span>";
     content += "<span class='fa fa-user pull-right'></span>";
     content += "</a>";
@@ -49,7 +53,7 @@ function player(name) {
 /** Grab players from api and append to parent node */
 function searchPlayers(old, node, query) {
     if (query != "") {
-        pending = getRequest("https://api.year4000.net/search/accounts/" + query + "?compact", function(data, error) {
+        pending = getRequest("{{ site.api }}search/accounts/" + query + "?compact", function(data, error) {
             if (error == null) {
                 var names = data.results == null ? [] : data.results;
 
@@ -80,7 +84,7 @@ function searchPlayers(old, node, query) {
     }
 }
 
-var q = getQuery("q")
+var q = getQuery("q") || getCookie(COOKIE_NAME);
 search.value = q;
 if (q != "") {
     search.onkeyup();

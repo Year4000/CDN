@@ -1,3 +1,5 @@
+---
+---
 var counter = 0;
 var ip = " <div class=\"btn btn-primary text-uppercase\">mc.year4000.net</div>";
 
@@ -29,7 +31,7 @@ var content = function() {
 };
 
 var request = function() {
-    getRequest("https://api.year4000.net/player-count?compact", function(data, error) {
+    getRequest("{{ site.api }}player-count?compact", function(data, error) {
         if (error == null) {
             var count = document.querySelector(".count");
             var last = parseInt(count.innerHTML);

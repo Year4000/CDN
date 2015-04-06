@@ -1,3 +1,5 @@
+---
+---
 var page = 1;
 var query = getQuery("q");
 var btn = document.querySelector(".searching");
@@ -27,7 +29,7 @@ btn.onclick = function() {
     btn.innerHTML = "Loading...";
     btn.classList.add("disabled");
 
-    var url = "https://api.year4000.net/search/accounts/" + query + "?page=" + (++page);
+    var url = "{{ site.api }}search/accounts/" + query + "?page=" + (++page);
     getRequest(url, function(data, error) {
         if (error == null) {
             var length = parseInt(data.results.length);

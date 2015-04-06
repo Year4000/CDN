@@ -1,6 +1,8 @@
-window.onload = update;
+---
+---
 var count_done = true;
 var network_done = true;
+window.onload = update;
 
 function update() {
     if (count_done && network_done) {
@@ -27,7 +29,7 @@ function network() {
         for (var name in results.network) {
             name = results.network[name];
             players += "<a href='/player/" + name + "' title='" + name + "'>";
-            players += "<img src='https://api.year4000.net/avatar/" + name + "/40?hat' /> ";
+            players += "<img src='{{ site.api }}avatar/" + name + "/40?hat' /> ";
             players += "</a>";
         }
 
@@ -35,7 +37,7 @@ function network() {
         network_done = true;
     };
 
-    request.open("GET", "https://api.year4000.net/player-list?compact", true);
+    request.open("GET", "{{ site.api }}player-list?compact", true);
     request.send();
 }
 
@@ -49,6 +51,6 @@ function players() {
         count_done = true;
     };
 
-    request.open("GET", "https://api.year4000.net/player-count?compact", true);
+    request.open("GET", "{{ site.api }}player-count?compact", true);
     request.send();
 }

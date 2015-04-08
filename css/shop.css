@@ -1,0 +1,37 @@
+.pkg-disabled * {
+    opacity: .8 !important;
+}
+
+.pkg-disabled .btn:hover, .pkg-disabled .btn {
+    background: #307DBF;
+    border: 1px solid #418ECF;
+}
+
+.shop-item {
+    padding: 5px !important;
+}
+
+.shop-item li {
+    padding: 0 5px;
+}
+
+.shop-item li:nth-child(odd) {
+    background: #dfdfdf;
+}
+
+.shop-item form {
+    display: inline-block;
+}
+
+.shop-item form .btn {
+    margin: 5px;
+}
+
+.shop-cat {
+    margin: 5px 20px;
+    padding: 5px 0;
+}
+
+blockquote, .blockquote-reverse {
+    border-color: #418ECF;
+}

@@ -4,6 +4,7 @@ var COOKIE_NAME = "y4k-search";
 var autocomplete = document.getElementById("search-input-autocomplete");
 var search = document.getElementById("search-input");
 var pending = null;
+
 search.onkeyup = function() {
     var results = document.getElementById("search-results");
     var ul = document.createElement("ul");

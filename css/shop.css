@@ -7,16 +7,21 @@
     border: 1px solid #418ECF;
 }
 
-.shop-item {
+.shop-item, .shop-item ul {
     padding: 5px !important;
 }
 
 .shop-item li {
-    padding: 0 5px;
+    padding: 2px 5px;
+}
+
+.shop-item .panel-body {
+    padding: 10px;
+    padding-bottom: 0 !important;
 }
 
 .shop-item li:nth-child(odd) {
-    background: #dfdfdf;
+    background: #eee;
 }
 
 .shop-item form {
@@ -34,4 +39,35 @@
 
 blockquote, .blockquote-reverse {
     border-color: #418ECF;
+}
+.user-img {
+    padding: 2px;
+}
+
+.item-min-height {
+    min-height: 250px;
+}
+
+.shop-sub {
+    margin: 0 10px;
+}
+
+.paypal:hover {
+    color: #3b7bbf;
+}
+
+.visa:hover {
+    color: #2c21a6;
+}
+
+.mastercard:hover {
+    color: #c00;
+}
+
+.amex:hover {
+    color: #036;
+}
+
+.discover:hover {
+    color: #ff6000;
 }

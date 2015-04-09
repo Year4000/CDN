@@ -3,29 +3,6 @@ var CONST = {
 };
 
 /** A get request that run a function when retrieved */
-var getRawRequest = function(url, results) {
-    var request = new XMLHttpRequest();
-
-    request.onload = function() {
-        var response = null, error = null;
-
-        try {
-            response = request.responseText;
-        }
-        catch (e) {
-            error = e;
-        }
-        finally {
-            results(response, error);
-        }
-    };
-
-    request.open("GET", url, true);
-    request.send();
-    return request;
-};
-
-/** A get request that run a function when retrieved */
 var getRequest = function(url, results) {
     var request = new XMLHttpRequest();
 
@@ -63,13 +40,37 @@ function getQuery(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+function colorRank(string) {
+    // Ranks
+    string = string.replace("Alpha", "§3Alpha§f");
+    string = string.replace("Theta", "§7Theta§f");
+    string = string.replace("Mu", "§eMu§f");
+    string = string.replace("Pi", "§bPi§f");
+    string = string.replace("Sigma", "§6Sigma§f");
+    string = string.replace("Phi", "§5Phi§f");
+    string = string.replace("Delta", "§9Delta§f");
+    string = string.replace("Omega", "§cOmega§f");
+
+    // Badges
+    string = string.replace("α", "§3α§f");
+    string = string.replace("Θ", "§7Θ§f");
+    string = string.replace("μ", "§eμ§f");
+    string = string.replace("π", "§bπ§f");
+    string = string.replace("σ", "§6σ§f");
+    string = string.replace("Φ", "§5Φ§f");
+    string = string.replace("δ", "§9δ§f");
+    string = string.replace("Ω", "§cΩ§f");
+
+    return color(string);
+}
+
 /** Replace mc color codes with the css class */
 function color(string) {
-    var newString = "<span class='mc-gray'>" + string + "</span>";
+    var newString = "<span>" + string + "</span>";
 
-    while (newString.contains("§")) {
+    while (newString.indexOf("§") != -1) {
         newString = newString.replace("§a", "</span><span class='mc-green'>");
-        newString = newString.replace("§b", "</span><span class='mc-light-green'>");
+        newString = newString.replace("§b", "</span><span class='mc-aqua'>");
         newString = newString.replace("§c", "</span><span class='mc-red'>");
         newString = newString.replace("§d", "</span><span class='mc-light-purple'>");
         newString = newString.replace("§e", "</span><span class='mc-yellow'>");

@@ -1,3 +1,7 @@
+/** Locale system for Year4000 */
+var _ = {
+
+};
 var COOKIE_LOCALE = "y4k-locale-cache";
 var COOKIE_LOCALE_CODE = "y4k-locale-code";
 //var url = "https://api.github.com/repos/Year4000/Locales/contents/website/locales.json";
@@ -5,8 +9,7 @@ var url = "https://api.github.com/repos/Year4000/Locales/contents/website/en.pro
 var namespace = {};
 
 var decode = function(base64) {
-    var lines = Base64.decode(base64).split("\n");
-    var bob
+    var lines = $$.Base64.decode(base64).split("\n");
 
     for (var i = 0; i < lines.length; i++) {
         var line = lines[i];
@@ -18,10 +21,10 @@ var decode = function(base64) {
 };
 
 var readResponse = function() {
-    if (true || getCookie(COOKIE_LOCALE) == "") {
-        getRequest(url, function(data, error) {
+    if (true || $$.Cookies.cookie(COOKIE_LOCALE) == "") {
+        $$.getRequest(url, function(data, error) {
             if (error == null) {
-                setCookie(COOKIE_LOCALE, data.content);
+                $$.Cookies.cookie(COOKIE_LOCALE, data.content);
                 namespace = decode(data.content);
             }
         });
@@ -29,5 +32,3 @@ var readResponse = function() {
 
     //namespace = getCookie(COOKIE_LOCALE);
 };
-
-readResponse();

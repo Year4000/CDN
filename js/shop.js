@@ -1,22 +1,22 @@
----
----
 var shopName = document.getElementById("shop-username");
 var shopForm = document.getElementById("shop-username-form");
 var shopPending = null;
 
 shopForm.onsubmit = function() {
     var name = shopName.value;
-    var url = "{{ site.api }}accounts/" + name + "?compact", pkg_url;
-    getRequest(url, function(data, error) {
+    var url = $$.Y4K_API + "accounts/" + name + "?compact", pkg_url;
+    document.getElementById("shop-img").src = $$.Y4K_API + "avatar/" + name + "/28";
+
+    $$.getRequest(url, function(data, error) {
         var account = data.id;
         if (error == null && account != undefined) {
-            pkg_url = "{{ site.api }}packages/ranks?account=" + account + "&compact";
+            pkg_url = $$.Y4K_API + "packages/ranks?account=" + account + "&compact";
         }
         else {
-            pkg_url = "{{ site.api }}packages/ranks?compact";
+            pkg_url = $$.Y4K_API + "packages/ranks?compact";
         }
 
-        getRequest(pkg_url, function (data, error) {
+        $$.getRequest(pkg_url, function (data, error) {
             if (error == null) {
                 for (var pkg_id in data) {
                     var pkg = document.getElementById("pkg-" + pkg_id);
@@ -51,11 +51,11 @@ shopName.onkeyup = function() {
 };
 
 var search = function(name) {
-    var url = "{{ site.api }}search/accounts/" + name + "?compact";
-    shopPending = getRequest(url, function(data, error) {
+    var url = $$.Y4K_API + "search/accounts/" + name + "?compact";
+    shopPending = $$.getRequest(url, function(data, error) {
         if (error == null) {
             var username = data.results[0].minecraft.username;
-            document.getElementById("shop-img").src = "{{ site.api }}avatar/" + username + "/28";
+            document.getElementById("shop-img").src = $$.Y4K_API + "avatar/" + username + "/28";
         }
 
         shopPending = null;

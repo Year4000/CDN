@@ -1,143 +1,165 @@
-var CONST = {
-    "COOKIE_MAX": 365
+/** The Utilities class for Year4000 */
+var $$ = {
+    /** Not in production run in debug mode */
+    debug: window.location.indexOf("www.year4000.net") == -1,
+
+    Y4K_API: "https://api.year4000.net/",
+    Y4K_CDN: "https://cdn.year4000.net/",
+    Y4K_WEB: "https://www.year4000.net/",
+
+    /** A get request that run a function when retrieved */
+    getRequest: function (url, results) {
+        var request = new XMLHttpRequest();
+
+        request.onload = function() {
+            var response = null, error = null;
+
+            try {
+                response = JSON.parse(request.responseText);
+            }
+            catch (e) {
+                error = e;
+            }
+            finally {
+                results(response, error);
+            }
+        };
+
+        request.open("GET", url, true);
+        request.send();
+        return request;
+    },
+
+    /** Clear out all the child from the parent node */
+    clearTree: function (node) {
+        while (node.firstChild) {
+            node.removeChild(node.firstChild);
+        }
+    },
+
+    /** Get query parameter */
+    query: function (name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    },
+
+    /** Color the ranks of Year4000 */
+    colorRank: function (string) {
+        // Ranks
+        string = string.replace("Alpha", "§3Alpha§f");
+        string = string.replace("Theta", "§7Theta§f");
+        string = string.replace("Mu", "§eMu§f");
+        string = string.replace("Pi", "§bPi§f");
+        string = string.replace("Sigma", "§6Sigma§f");
+        string = string.replace("Phi", "§5Phi§f");
+        string = string.replace("Delta", "§9Delta§f");
+        string = string.replace("Omega", "§cOmega§f");
+
+        // Badges
+        string = string.replace("α", "§3α§f");
+        string = string.replace("Θ", "§7Θ§f");
+        string = string.replace("μ", "§eμ§f");
+        string = string.replace("π", "§bπ§f");
+        string = string.replace("σ", "§6σ§f");
+        string = string.replace("Φ", "§5Φ§f");
+        string = string.replace("δ", "§9δ§f");
+        string = string.replace("Ω", "§cΩ§f");
+
+        return $$.color(string);
+    },
+
+    /** Color the Minecraft string */
+    color: function (string) {
+        var newString = "<span>" + string + "</span>";
+
+        while (newString.indexOf("§") != -1) {
+            newString = newString.replace("§a", "</span><span class='mc-green'>");
+            newString = newString.replace("§b", "</span><span class='mc-aqua'>");
+            newString = newString.replace("§c", "</span><span class='mc-red'>");
+            newString = newString.replace("§d", "</span><span class='mc-light-purple'>");
+            newString = newString.replace("§e", "</span><span class='mc-yellow'>");
+            newString = newString.replace("§f", "</span><span class='mc-white'>");
+            newString = newString.replace("§0", "</span><span class='mc-black'>");
+            newString = newString.replace("§1", "</span><span class='mc-dark-blue'>");
+            newString = newString.replace("§2", "</span><span class='mc-dark-green'>");
+            newString = newString.replace("§3", "</span><span class='mc-dark-aqua'>");
+            newString = newString.replace("§4", "</span><span class='mc-dark-red'>");
+            newString = newString.replace("§5", "</span><span class='mc-dark-purple'>");
+            newString = newString.replace("§6", "</span><span class='mc-gold'>");
+            newString = newString.replace("§7", "</span><span class='mc-gray'>");
+            newString = newString.replace("§8", "</span><span class='mc-light-gray'>");
+            newString = newString.replace("§9", "</span><span class='mc-blue'>");
+            newString = newString.replace("§k", "</span><span class='mc-white'>");
+            newString = newString.replace("§o", "</span><span class='mc-white'>");
+            newString = newString.replace("§l", "</span><span class='mc-white'>");
+            newString = newString.replace("§m", "</span><span class='mc-white'>");
+            newString = newString.replace("§r", "</span><span class='mc-white'>");
+        }
+
+        return newString;
+    }
 };
 
-/** A get request that run a function when retrieved */
-var getRequest = function(url, results) {
-    var request = new XMLHttpRequest();
+/** Handle cookies */
+$$.Cookies = {
+    COOKIE_MAX: 365,
 
-    request.onload = function() {
-        var response = null, error = null;
+    /** Get or set a cookie */
+    cookie: function (name, value, time) {
+        // Get a cookie by its name
+        if (value == undefined && time == undefined) {
+            return this._get_cookie(name);
+        }
+        // Set a cookie
+        else {
+            this._set_cookie(name, value, time);
+        }
+    },
 
-        try {
-            response = JSON.parse(request.responseText);
-        }
-        catch (e) {
-            error = e;
-        }
-        finally {
-            results(response, error);
-        }
-    };
+    /** Get a cookie by its name */
+    _get_cookie: function (name) {
+        name += "=";
+        var cookies = document.cookie.split(';');
 
-    request.open("GET", url, true);
-    request.send();
-    return request;
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+
+            if (cookie.indexOf(name) == 0) {
+                return cookie.substring(name.length, cookie.length);
+            }
+        }
+    },
+
+    /** Set a cookie */
+    _set_cookie: function (name, value, time) {
+        if (time == undefined) {
+            document.cookie = name + "=" + value;
+        }
+        else {
+            var date = new Date();
+            date.setTime(date.getTime() + (time * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + "; " + expires;
+        }
+    },
+
+    /** Remove a cookie */
+    remove: function (name) {
+        $$.Cookies.cookie(name, "", 0);
+    }
 };
-
-/** Clear out all the child from the parent node */
-function clearTree(node) {
-    while (node.firstChild) {
-        node.removeChild(node.firstChild);
-    }
-}
-
-/** Get query parameter */
-function getQuery(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-function colorRank(string) {
-    // Ranks
-    string = string.replace("Alpha", "§3Alpha§f");
-    string = string.replace("Theta", "§7Theta§f");
-    string = string.replace("Mu", "§eMu§f");
-    string = string.replace("Pi", "§bPi§f");
-    string = string.replace("Sigma", "§6Sigma§f");
-    string = string.replace("Phi", "§5Phi§f");
-    string = string.replace("Delta", "§9Delta§f");
-    string = string.replace("Omega", "§cOmega§f");
-
-    // Badges
-    string = string.replace("α", "§3α§f");
-    string = string.replace("Θ", "§7Θ§f");
-    string = string.replace("μ", "§eμ§f");
-    string = string.replace("π", "§bπ§f");
-    string = string.replace("σ", "§6σ§f");
-    string = string.replace("Φ", "§5Φ§f");
-    string = string.replace("δ", "§9δ§f");
-    string = string.replace("Ω", "§cΩ§f");
-
-    return color(string);
-}
-
-/** Replace mc color codes with the css class */
-function color(string) {
-    var newString = "<span>" + string + "</span>";
-
-    while (newString.indexOf("§") != -1) {
-        newString = newString.replace("§a", "</span><span class='mc-green'>");
-        newString = newString.replace("§b", "</span><span class='mc-aqua'>");
-        newString = newString.replace("§c", "</span><span class='mc-red'>");
-        newString = newString.replace("§d", "</span><span class='mc-light-purple'>");
-        newString = newString.replace("§e", "</span><span class='mc-yellow'>");
-        newString = newString.replace("§f", "</span><span class='mc-white'>");
-        newString = newString.replace("§0", "</span><span class='mc-black'>");
-        newString = newString.replace("§1", "</span><span class='mc-dark-blue'>");
-        newString = newString.replace("§2", "</span><span class='mc-dark-green'>");
-        newString = newString.replace("§3", "</span><span class='mc-dark-aqua'>");
-        newString = newString.replace("§4", "</span><span class='mc-dark-red'>");
-        newString = newString.replace("§5", "</span><span class='mc-dark-purple'>");
-        newString = newString.replace("§6", "</span><span class='mc-gold'>");
-        newString = newString.replace("§7", "</span><span class='mc-gray'>");
-        newString = newString.replace("§8", "</span><span class='mc-light-gray'>");
-        newString = newString.replace("§9", "</span><span class='mc-blue'>");
-        newString = newString.replace("§k", "</span><span class='mc-white'>");
-        newString = newString.replace("§o", "</span><span class='mc-white'>");
-        newString = newString.replace("§l", "</span><span class='mc-white'>");
-        newString = newString.replace("§m", "</span><span class='mc-white'>");
-        newString = newString.replace("§r", "</span><span class='mc-white'>");
-    }
-
-    return newString;
-}
-
-/** Create a cookie */
-function setCookie(cname, cvalue, exdays) {
-    if (exdays == undefined) {
-        document.cookie = cname + "=" + cvalue;
-    }
-    else {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + "; " + expires;
-    }
-}
-
-/** Get a cookie */
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-
-    return "";
-}
-
-/** Remove a cookie */
-function removeCookie(cname) {
-    setCookie(cname, "", 0);
-}
 
 /**
 *  Base64 encode / decode
 *  http://www.webtoolkit.info/
 */
-var Base64 = {
+$$.Base64 = {
     // private property
     _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
 

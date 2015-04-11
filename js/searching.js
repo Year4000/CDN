@@ -1,7 +1,5 @@
----
----
 var page = 1;
-var query = getQuery("q");
+var query = $$.query("q");
 var btn = document.querySelector(".searching");
 var results = document.getElementById("results");
 
@@ -29,8 +27,8 @@ btn.onclick = function() {
     btn.innerHTML = "Loading...";
     btn.classList.add("disabled");
 
-    var url = "{{ site.api }}search/accounts/" + query + "?page=" + (++page);
-    getRequest(url, function(data, error) {
+    var url = $$.Y4K_API + "search/accounts/" + query + "?page=" + (++page);
+    $$.getRequest(url, function(data, error) {
         if (error == null) {
             var length = parseInt(data.results.length);
 

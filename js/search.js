@@ -1,5 +1,3 @@
----
----
 var COOKIE_NAME = "y4k-search";
 var autocomplete = document.getElementById("search-input-autocomplete");
 var search = document.getElementById("search-input");
@@ -15,7 +13,7 @@ search.onkeyup = function() {
     }
 
     searchPlayers(results, ul, this.value);
-    setCookie(COOKIE_NAME, this.value);
+    $$.Cookies.cookie(COOKIE_NAME, this.value);
 };
 
 search.onkeypress = function() {
@@ -41,8 +39,8 @@ function player(name) {
     var li = document.createElement("li");
     var content = "";
 
-    content += "<a href='{{ site.url }}player/" + name + "'>";
-    content += "<img src='{{ site.api }}avatar/" + name + "/20?hat'> ";
+    content += "<a href='" + $$.Y4K_WEB + "player/" + name + "'>";
+    content += "<img src='" + $$.Y4K_API + "avatar/" + name + "/20?hat'> ";
     content += "<span>" + name + "</span>";
     content += "<span class='fa fa-user pull-right'></span>";
     content += "</a>";
@@ -54,7 +52,7 @@ function player(name) {
 /** Grab players from api and append to parent node */
 function searchPlayers(old, node, query) {
     if (query != "") {
-        pending = getRequest("{{ site.api }}search/accounts/" + query + "?compact", function(data, error) {
+        pending = $$.getRequest($$.Y4K_API + "search/accounts/" + query + "?compact", function(data, error) {
             if (error == null) {
                 var names = data.results == null ? [] : data.results;
 
@@ -62,7 +60,7 @@ function searchPlayers(old, node, query) {
                     autocomplete.value += names[0].minecraft.username.substr(query.length);
                 }
 
-                clearTree(old);
+                $$.clearTree(old);
 
                 // Populate with results
                 for (var i = 0; i < names.length && i < 8; i++) {
@@ -78,14 +76,14 @@ function searchPlayers(old, node, query) {
         });
     }
     else {
-        clearTree(old);
+        $$.clearTree(old);
         node.appendChild(none());
         old.appendChild(node);
         autocomplete.value = "Search Year4000";
     }
 }
 
-var q = getQuery("q") || getCookie(COOKIE_NAME);
+var q = $$.query("q") || $$.Cookies.cookie(COOKIE_NAME);
 search.value = q;
 if (q != "") {
     search.onkeyup();

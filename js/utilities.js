@@ -332,21 +332,25 @@ $$.Accounts = {
     /** The login function to log the account in by setting the cookie */
     login: function () {
         var forum = this;
-        var url = $$.Y4K_API + "auth/login";
         var data = {'token': forum.token.value, 'email': forum.email.value, 'password': forum.password.value};
+        $$.Accounts.login_account(data, forum);
+        return false;
+    },
+
+    /** The login code */
+    login_account: function (data, forum) {
+        var url = $$.Y4K_API + "auth/login";
         $$.postRequest(url, data, function(key, error) {
             if (error == null && key.status == undefined) {
                 $$.load($$.Y4K_WEB + "forums#token=" + data.token);
                 $$.Cookies.cookie("y4k-token", data.token);
                 $$.Cookies.cookie("y4k-account", key.account + ":" + key.key, 30);
             }
-            else {
+            else if (forum != undefined) {
                 $("#email-group").addClass("has-error");
                 $("#password-group").addClass("has-error");
             }
         });
-
-        return false;
     },
 
     /** Log the user out */
@@ -357,7 +361,7 @@ $$.Accounts = {
     },
 
     /** Check if the user is logged in */
-    check: function () {
+    check: function (token) {
         var account = $$.Cookies.cookie("y4k-account");
 
         if (account == undefined) {
@@ -368,11 +372,13 @@ $$.Accounts = {
         account = account.split(":");
         var url = $$.Y4K_API + "auth/verify/" + account[0] + "?key=" + account[1];
         $$.postRequest(url, {}, function(data, error) {
-            if (error == null) {
-                alert(JSON.stringify(data));
+            if (error == null && data.status == 200) {
+                var new_key = {'token': token, 'email': account[0], 'password': account[1]};
+                $$.Accounts.login_account(new_key);
             }
             else {
                 $$.Cookies.remove("y4k-account");
+                window.location.reload();
             }
         });
     }

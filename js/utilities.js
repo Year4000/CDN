@@ -1,17 +1,31 @@
 /** The Utilities class for Year4000 */
 var $$ = {
     /** Not in production run in debug mode */
-    debug: window.location.indexOf("www.year4000.net") == -1,
+    //debug: window.location.indexOf("www.year4000.net") == -1,
 
-    Y4K_API: "https://api.year4000.net/",
-    Y4K_CDN: "https://cdn.year4000.net/",
-    Y4K_WEB: "https://www.year4000.net/",
+    //Y4K_API: "https://api.year4000.net/",
+    //Y4K_CDN: "https://cdn.year4000.net/",
+    //Y4K_WEB: "https://www.year4000.net/",
+    Y4K_API: "https://home-api.ewized.com/",
+    Y4K_CDN: "https://home-cdn.ewized.com/",
+    Y4K_WEB: "https://home.ewized.com/",
+
+    /** Simple request to get a ajax request */
+    _request: function (url, type, load, delay) {
+        var request = new XMLHttpRequest();
+        request.onload = load;
+        request.open(type, url, true);
+
+        if (delay == undefined) {
+            request.send();
+        }
+
+        return request;
+    },
 
     /** A get request that run a function when retrieved */
     getRequest: function (url, results) {
-        var request = new XMLHttpRequest();
-
-        request.onload = function() {
+        return $$._request(url, "GET", function() {
             var response = null, error = null;
 
             try {
@@ -23,11 +37,33 @@ var $$ = {
             finally {
                 results(response, error);
             }
-        };
+        });
+    },
 
-        request.open("GET", url, true);
-        request.send();
-        return request;
+    /** Send a post request */
+    postRequest: function (url, data, results) {
+        var request = $$._request(url, "POST", function () {
+            var response = null, error = null;
+
+            try {
+                response = JSON.parse(request.responseText);
+            }
+            catch (e) {
+                error = e;
+            }
+            finally {
+                results(response, error);
+            }
+        }, true);
+
+        var string = JSON.stringify(data);
+
+        request.send(string);
+    },
+
+    /** Load the url */
+    load: function (site) {
+        window.location = site;
     },
 
     /** Clear out all the child from the parent node */
@@ -290,5 +326,54 @@ $$.Base64 = {
         }
 
         return string;
+    }
+};
+$$.Accounts = {
+    /** The login function to log the account in by setting the cookie */
+    login: function () {
+        var forum = this;
+        var url = $$.Y4K_API + "auth/login";
+        var data = {'token': forum.token.value, 'email': forum.email.value, 'password': forum.password.value};
+        $$.postRequest(url, data, function(key, error) {
+            if (error == null && key.status == undefined) {
+                $$.load($$.Y4K_WEB + "forums#token=" + data.token);
+                $$.Cookies.cookie("y4k-token", data.token);
+                $$.Cookies.cookie("y4k-account", key.account + ":" + key.key, 30);
+            }
+            else {
+                $("#email-group").addClass("has-error");
+                $("#password-group").addClass("has-error");
+            }
+        });
+
+        return false;
+    },
+
+    /** Log the user out */
+    logout: function () {
+        $$.Cookies.remove("y4k-account");
+        $$.Cookies.remove("y4k-token");
+        $$.load($$.Y4K_WEB);
+    },
+
+    /** Check if the user is logged in */
+    check: function () {
+        var account = $$.Cookies.cookie("y4k-account");
+
+        if (account == undefined) {
+            $$.Cookies.remove("y4k-account");
+            return;
+        }
+
+        account = account.split(":");
+        var url = $$.Y4K_API + "auth/verify/" + account[0] + "?key=" + account[1];
+        $$.postRequest(url, {}, function(data, error) {
+            if (error == null) {
+                alert(JSON.stringify(data));
+            }
+            else {
+                $$.Cookies.remove("y4k-account");
+            }
+        });
     }
 };

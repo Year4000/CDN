@@ -344,7 +344,14 @@ $$.Accounts = {
         var url = $$.Y4K_API + "auth/login";
         $$.postRequest(url, data, function(key, error) {
             if (error == null && key.status == undefined) {
-                $$.load($$.Y4K_WEB + "forums#token=" + data.token);
+                if (forum != undefined) {
+                    $$.load($$.Y4K_WEB + "forums#token=" + data.token);
+                }
+                else {
+                    $$.load(String(document.location).split("#")[0] + "#token=" + data.token);
+                    window.location.reload();
+                }
+
                 $$.Cookies.cookie("y4k-token", data.token);
                 $$.Cookies.cookie("y4k-account", key.account + ":" + key.key, 30);
             }
@@ -381,6 +388,7 @@ $$.Accounts = {
             }
             else {
                 $$.Cookies.remove("y4k-account");
+                $$.load(String(document.location).split("#")[0]);
                 window.location.reload();
             }
         });

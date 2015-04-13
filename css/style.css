@@ -117,6 +117,10 @@ body {
     box-shadow: 1px 1px 5px #999;
 }
 
+.error-block {
+    height: 60px;
+}
+
 .game-pane {
     min-height: 300px;
 }

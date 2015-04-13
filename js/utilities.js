@@ -349,6 +349,7 @@ $$.Accounts = {
             else if (forum != undefined) {
                 $("#email-group").addClass("has-error");
                 $("#password-group").addClass("has-error");
+                $("#login-error").removeClass("hidden");
             }
         });
     },

@@ -25,7 +25,7 @@ var $$ = {
 
     /** A get request that run a function when retrieved */
     getRequest: function (url, results) {
-        return $$._request(url, "GET", function() {
+        var request = $$._request(url, "GET", function() {
             var response = null, error = null;
 
             try {
@@ -38,6 +38,8 @@ var $$ = {
                 results(response, error);
             }
         });
+
+        return request;
     },
 
     /** Send a post request */

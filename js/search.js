@@ -84,7 +84,7 @@ function searchPlayers(old, node, query) {
 }
 
 var q = $$.query("q") || $$.Cookies.cookie(COOKIE_NAME);
-search.value = q;
-if (q != "") {
+if (q != undefined && q != "") {
+    search.value = q;
     search.onkeyup();
 }

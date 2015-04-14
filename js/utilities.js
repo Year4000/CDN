@@ -177,13 +177,13 @@ $$.Cookies = {
     /** Set a cookie */
     _set_cookie: function (name, value, time) {
         if (time == undefined) {
-            document.cookie = name + "=" + value;
+            document.cookie = name + "=" + value + "; path=/";
         }
         else {
             var date = new Date();
             date.setTime(date.getTime() + (time * 24 * 60 * 60 * 1000));
             var expires = "expires=" + date.toUTCString();
-            document.cookie = name + "=" + value + "; " + expires;
+            document.cookie = name + "=" + value + "; " + expires + "; path=/";
         }
     },
 

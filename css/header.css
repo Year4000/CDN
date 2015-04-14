@@ -235,16 +235,11 @@
 @media screen and (max-width: 525px) {
     #search .input-group input {
         padding: 1px;
-        margin: 1px;
+        margin: 0;
     }
 
     #search .input-group {
-        width: 110px !important;
-    }
-
-    #search {
-        display: inline-block;
-        text-align: center;
+        width: 105px !important;
     }
 }
 
@@ -262,7 +257,7 @@
 
 @media screen and (max-width: 920px) {
     #menu {
-        margin: 0;
+        margin: 2px !important;
     }
 
     #header .header {

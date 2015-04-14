@@ -1,6 +1,6 @@
 @charset "UTF-8";
 * {
-    border-radius: 0px !important;
+    border-radius: 0 !important;
 }
 
 a, a:visited {
@@ -20,6 +20,18 @@ a:focus, a:active {
 
 .hidden {
     display: none !important;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.overflow {
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: auto;
 }
 
 /* Super lables */

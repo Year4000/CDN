@@ -3,12 +3,9 @@ var $$ = {
     /** Not in production run in debug mode */
     //debug: window.location.indexOf("www.year4000.net") == -1,
 
-    //Y4K_API: "https://api.year4000.net/",
-    //Y4K_CDN: "https://cdn.year4000.net/",
-    //Y4K_WEB: "https://www.year4000.net/",
-    Y4K_API: "https://home-api.ewized.com/",
-    Y4K_CDN: "https://home-cdn.ewized.com/",
-    Y4K_WEB: "https://home.ewized.com/",
+    Y4K_API: "https://api.year4000.net/",
+    Y4K_CDN: "https://cdn.year4000.net/",
+    Y4K_WEB: "https://www.year4000.net/",
 
     /** Simple request to get a ajax request */
     _request: function (url, type, load, delay) {

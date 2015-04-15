@@ -1,0 +1,4 @@
+# Debug site settings
+api: "http://dev.api.year4000.net/"
+url: "http://dev.www.year4000.net/"
+cdn: "http://dev.cdn.year4000.net/"

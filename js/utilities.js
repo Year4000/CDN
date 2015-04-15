@@ -1,11 +1,11 @@
 /** The Utilities class for Year4000 */
 var $$ = {
     /** Not in production run in debug mode */
-    //debug: window.location.indexOf("www.year4000.net") == -1,
+    debug: String(window.location).indexOf("dev.www.year4000.net") > 0,
 
-    Y4K_API: "https://api.year4000.net/",
-    Y4K_CDN: "https://cdn.year4000.net/",
-    Y4K_WEB: "https://www.year4000.net/",
+    Y4K_API: $$.debug ? "http://dev.api.year4000.net" : "https://api.year4000.net/",
+    Y4K_CDN: $$.debug ? "http://dev.cdn.year4000.net" : "https://cdn.year4000.net/",
+    Y4K_WEB: $$.debug ? "http://dev.www.year4000.net" : "https://www.year4000.net/",
 
     /** Simple request to get a ajax request */
     _request: function (url, type, load, delay) {

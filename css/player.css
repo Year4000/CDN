@@ -2,3 +2,47 @@
     background-position: center;
     -webkit-animation: none !important;
 }
+
+.player-header * {
+      vertical-align: middle;
+}
+
+.player-header dl {
+    text-align: left;
+    display: inline-block;
+}
+
+.player-header dd {
+    clear: both;
+}
+
+.player-header dd div, .player-header dd span {
+    float: left;
+}
+
+.player-header dd span {
+    margin: 0 2px;
+}
+
+.player-header dl dd:first-child {
+    font-size: 26px !important;
+}
+
+.player-header .progress, .player-header .progress-bar {
+    position: relative;
+    height: 20px;
+    margin: 0;
+}
+
+.player-header .progress span {
+    position: absolute;
+    display: inline-block;
+    width: 20px !important;
+    text-align: center;
+    z-index: 50;
+}
+
+.player-header .progress {
+    width: 24px !important;
+    background: #276499 !important;
+}

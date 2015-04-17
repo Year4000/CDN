@@ -173,6 +173,10 @@ body {
     font-size: 36px;
 }
 
+.user-img {
+    padding: 2px !important;
+}
+
 @media screen and (max-width: 768px) {
     #content {
         padding: 2% 5% !important;

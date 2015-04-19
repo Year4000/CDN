@@ -18,6 +18,11 @@ body {
     min-width: 320px;
 }
 
+img {
+    background: url("{{ site.cdn }}img/loading.gif") no-repeat center;
+    background-size: 16px;
+}
+
 #searching-wrapper {
     margin-bottom: 20px;
 }

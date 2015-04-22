@@ -23,6 +23,14 @@ img {
     background-size: 16px;
 }
 
+img[title$="Right"], img[title$="right"] {
+    float: right;
+}
+
+img[title$="Left"], img[title$="left"] {
+    float: left;
+}
+
 #searching-wrapper {
     margin-bottom: 20px;
 }

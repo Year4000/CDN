@@ -48,11 +48,15 @@
 }
 
 #logo img:first-child {
-    background-position: 0 0; width: 35px; height: 35px;;
+    background-position: 0 0;
+    width: 35px;
+    height: 35px;
 }
 
 #logo img:last-child {
-    background-position: -38px 0; width: 158px; height: 35px;;
+    background-position: -38px 0;
+    width: 158px;
+    height: 35px;
 }
 
 #search {

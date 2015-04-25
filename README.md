@@ -1,7 +1,12 @@
 # CDN
+
 Year4000's content delivery network for static content.
 
-# Copyright
+## Issues
+
+Report any issues in our [Meta](https://github.com/Year4000/Meta) repo.
+
+## Copyright
 
 By the nature of how content of this type works everything, unless stated otherwise is licensed under: 
 

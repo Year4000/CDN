@@ -1,4 +1,3 @@
-var COOKIE_NAME = "y4k-search";
 var autocomplete = document.getElementById("search-input-autocomplete");
 var search = document.getElementById("search-input");
 var pending = null;
@@ -13,7 +12,6 @@ search.onkeyup = function() {
     }
 
     searchPlayers(results, ul, this.value);
-    $$.Cookies.cookie(COOKIE_NAME, this.value);
 };
 
 search.onkeypress = function() {
@@ -83,7 +81,7 @@ function searchPlayers(old, node, query) {
     }
 }
 
-var q = $$.query("q") || $$.Cookies.cookie(COOKIE_NAME);
+var q = $$.query("q");
 if (q != undefined && q != "") {
     search.value = q;
     search.onkeyup();

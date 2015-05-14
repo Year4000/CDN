@@ -158,7 +158,6 @@ img[title$="Left"], img[title$="left"] {
     border-bottom: 1px solid #fff;
     width: 100%;
     height: 100px;
-    background: rgba(255, 255, 255, 0.8) url(https://unsplash.it/g/300/100/?random);
 }
 
 .game-pane p:first-letter {

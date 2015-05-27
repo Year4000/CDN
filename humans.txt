@@ -2,3 +2,6 @@
 
 Name: Joshua Rodriguez
 Site: https://www.ewized.com
+
+Name: Justin Shores
+Site: https://www.facebook.com/jshodev?ref=hl

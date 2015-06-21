@@ -62,3 +62,8 @@ var search = function(name) {
         shopPending = null;
     });
 };
+
+// If value is filled out on load execute onsubmit
+if (shopName.value != null && shopName.value != undefined) {
+    shopForm.onsubmit();
+}

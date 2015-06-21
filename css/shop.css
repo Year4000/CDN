@@ -7,6 +7,24 @@
     border: 1px solid #418ECF;
 }
 
+#shop-ranks {
+    position: relative;
+}
+
+.shop-enter-name {
+    position: absolute;
+    z-index: 500;
+    opacity: 1 !important;
+    text-align: center;
+    width: 77%;
+    padding: 5%;
+    margin: 70% 13% 0 10%;
+}
+
+.shop-item {
+    position: relative;
+}
+
 .shop-item, .shop-item ul {
     padding: 5px !important;
 }

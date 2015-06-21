@@ -23,6 +23,7 @@ shopForm.onsubmit = function() {
                     var pkg_button = document.querySelector("#pkg-" + pkg_id + " button[type='submit']");
                     var pkg_account = document.querySelector("#pkg-" + pkg_id + " .account-id");
                     var pkg_enabled = data[pkg_id].can_buy == undefined ? false : data[pkg_id].can_buy;
+                    $("#pkg-" + pkg_id + " .alert").hide();
 
                     if (pkg_enabled) {
                         pkg.classList.remove("pkg-disabled");

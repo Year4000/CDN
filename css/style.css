@@ -157,7 +157,6 @@ img[title$="Left"], img[title$="left"] {
 .game-pane img {
     border-bottom: 1px solid #fff;
     width: 100%;
-    height: 100px;
 }
 
 .game-pane p:first-letter {

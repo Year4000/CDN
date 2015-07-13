@@ -83,24 +83,24 @@ var $$ = {
     /** Color the ranks of Year4000 */
     colorRank: function (string) {
         // Ranks
-        string = string.replace("Alpha", "§3Alpha§f");
-        string = string.replace("Theta", "§7Theta§f");
-        string = string.replace("Mu", "§eMu§f");
-        string = string.replace("Pi", "§bPi§f");
-        string = string.replace("Sigma", "§6Sigma§f");
-        string = string.replace("Phi", "§5Phi§f");
-        string = string.replace("Delta", "§9Delta§f");
-        string = string.replace("Omega", "§cOmega§f");
+        string = string.replace("Alpha", "&3Alpha&f");
+        string = string.replace("Theta", "&7Theta&f");
+        string = string.replace("Mu", "&eMu&f");
+        string = string.replace("Pi", "&bPi&f");
+        string = string.replace("Sigma", "&6Sigma&f");
+        string = string.replace("Phi", "&5Phi&f");
+        string = string.replace("Delta", "&9Delta&f");
+        string = string.replace("Omega", "&cOmega&f");
 
         // Badges
-        string = string.replace("α", "§3α§f");
-        string = string.replace("Θ", "§7Θ§f");
-        string = string.replace("μ", "§eμ§f");
-        string = string.replace("π", "§bπ§f");
-        string = string.replace("σ", "§6σ§f");
-        string = string.replace("Φ", "§5Φ§f");
-        string = string.replace("δ", "§9δ§f");
-        string = string.replace("Ω", "§cΩ§f");
+        string = string.replace("α", "&3α&f");
+        string = string.replace("Θ", "&7Θ&f");
+        string = string.replace("μ", "&eμ&f");
+        string = string.replace("π", "&bπ&f");
+        string = string.replace("σ", "&6σ&f");
+        string = string.replace("Φ", "&5Φ&f");
+        string = string.replace("δ", "&9δ&f");
+        string = string.replace("Ω", "&cΩ&f");
 
         return $$.color(string);
     },
@@ -109,28 +109,28 @@ var $$ = {
     color: function (string) {
         var newString = "<span>" + string + "</span>";
 
-        while (newString.indexOf("§") != -1) {
-            newString = newString.replace("§a", "</span><span class='mc-green'>");
-            newString = newString.replace("§b", "</span><span class='mc-aqua'>");
-            newString = newString.replace("§c", "</span><span class='mc-red'>");
-            newString = newString.replace("§d", "</span><span class='mc-light-purple'>");
-            newString = newString.replace("§e", "</span><span class='mc-yellow'>");
-            newString = newString.replace("§f", "</span><span class='mc-white'>");
-            newString = newString.replace("§0", "</span><span class='mc-black'>");
-            newString = newString.replace("§1", "</span><span class='mc-dark-blue'>");
-            newString = newString.replace("§2", "</span><span class='mc-dark-green'>");
-            newString = newString.replace("§3", "</span><span class='mc-dark-aqua'>");
-            newString = newString.replace("§4", "</span><span class='mc-dark-red'>");
-            newString = newString.replace("§5", "</span><span class='mc-dark-purple'>");
-            newString = newString.replace("§6", "</span><span class='mc-gold'>");
-            newString = newString.replace("§7", "</span><span class='mc-gray'>");
-            newString = newString.replace("§8", "</span><span class='mc-light-gray'>");
-            newString = newString.replace("§9", "</span><span class='mc-blue'>");
-            newString = newString.replace("§k", "</span><span class='mc-white'>");
-            newString = newString.replace("§o", "</span><span class='mc-white'>");
-            newString = newString.replace("§l", "</span><span class='mc-white'>");
-            newString = newString.replace("§m", "</span><span class='mc-white'>");
-            newString = newString.replace("§r", "</span><span class='mc-white'>");
+        while (newString.indexOf("&") != -1) {
+            newString = newString.replace("&a", "</span><span class='mc-green'>");
+            newString = newString.replace("&b", "</span><span class='mc-aqua'>");
+            newString = newString.replace("&c", "</span><span class='mc-red'>");
+            newString = newString.replace("&d", "</span><span class='mc-light-purple'>");
+            newString = newString.replace("&e", "</span><span class='mc-yellow'>");
+            newString = newString.replace("&f", "</span><span class='mc-white'>");
+            newString = newString.replace("&0", "</span><span class='mc-black'>");
+            newString = newString.replace("&1", "</span><span class='mc-dark-blue'>");
+            newString = newString.replace("&2", "</span><span class='mc-dark-green'>");
+            newString = newString.replace("&3", "</span><span class='mc-dark-aqua'>");
+            newString = newString.replace("&4", "</span><span class='mc-dark-red'>");
+            newString = newString.replace("&5", "</span><span class='mc-dark-purple'>");
+            newString = newString.replace("&6", "</span><span class='mc-gold'>");
+            newString = newString.replace("&7", "</span><span class='mc-gray'>");
+            newString = newString.replace("&8", "</span><span class='mc-light-gray'>");
+            newString = newString.replace("&9", "</span><span class='mc-blue'>");
+            newString = newString.replace("&k", "</span><span class='mc-white'>");
+            newString = newString.replace("&o", "</span><span class='mc-white'>");
+            newString = newString.replace("&l", "</span><span class='mc-white'>");
+            newString = newString.replace("&m", "</span><span class='mc-white'>");
+            newString = newString.replace("&r", "</span><span class='mc-white'>");
         }
 
         return newString;

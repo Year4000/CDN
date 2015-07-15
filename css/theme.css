@@ -73,8 +73,21 @@ a:focus, a:active {
     padding-bottom: 66.66%;
 }
 
-.aspect-16-9 img, .aspect-4-3 img, .aspect-3-2 img, .aspect-8-5 img {
+.aspect-1-1 {
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.aspect-16-9, .aspect-4-3, .aspect-3-2, .aspect-8-5, .aspect-1-1 {
     position: relative;
+}
+
+.aspect-16-9 img, .aspect-4-3 img, .aspect-3-2 img, .aspect-8-5 img, .aspect-1-1 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
 }

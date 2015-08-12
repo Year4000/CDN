@@ -184,6 +184,25 @@ img[title$="Left"], img[title$="left"] {
     font-size: 36px;
 }
 
+#home-shop-sale {
+    position: absolute;
+    color: #c00;
+    font-size: 75px;
+    z-index: 1000;
+    left: 200px;
+    text-shadow: 2px 2px #b00;
+}
+
+#home-shop-sale h3 {
+    position: absolute;
+    line-height: 50px;
+    top: -5px;
+    left: 12px;
+    color: #eee;
+    font-size: 22px;
+    text-shadow: 1px 1px #666;
+}
+
 .user-img {
     padding: 2px !important;
 }

@@ -89,6 +89,7 @@ var $$ = {
         string = string.replace("Pi", "&bPi&f");
         string = string.replace("Sigma", "&6Sigma&f");
         string = string.replace("Phi", "&5Phi&f");
+        string = string.replace("Tau", "&aTau&f");
         string = string.replace("Delta", "&9Delta&f");
         string = string.replace("Omega", "&cOmega&f");
 
@@ -99,6 +100,7 @@ var $$ = {
         string = string.replace("π", "&bπ&f");
         string = string.replace("σ", "&6σ&f");
         string = string.replace("Φ", "&5Φ&f");
+        string = string.replace("τ", "&aτ&f");
         string = string.replace("δ", "&9δ&f");
         string = string.replace("Ω", "&cΩ&f");
 

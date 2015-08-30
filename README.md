@@ -4,7 +4,7 @@ Year4000's content delivery network for static content.
 
 ## Issues
 
-Report any issues in our [Meta](https://github.com/Year4000/Meta) repo.
+Report issues at our meta discussion, [Meta](https://github.com/Year4000/Meta).
 
 ## Copyright
 

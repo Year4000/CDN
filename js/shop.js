@@ -4,8 +4,9 @@ var shopPending = null;
 
 shopForm.onsubmit = function() {
     var name = shopName.value;
-    var url = $$.Y4K_API + "accounts/" + name + "?compact", pkg_url;
-    document.getElementById("shop-img").src = $$.Y4K_API + "avatar/" + name + "/28";
+    var isName = name == undefined || name == "";
+    var url = $$.Y4K_API + (isName ? "accounts" : "accounts/" + name) + "?compact", pkg_url;
+    document.getElementById("shop-img").src = $$.Y4K_API + (isName ? "avatar" : "avatar/" + name) + "/28";
 
     $$.getRequest(url, function(data, error) {
         var account = data.id;
